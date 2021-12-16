@@ -12,7 +12,17 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+/*
 Route::get('/', function () {
-    return view('welcome');
+     return view('welcome');
+});
+ */
+/*
+Route::get('/',function(){
+    return "Hello,world!";
+});
+ */
+
+Route::post('/',function(){
+    return "这是POST请求";
 });
