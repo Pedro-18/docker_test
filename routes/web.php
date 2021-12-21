@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,6 +56,37 @@ Route::get('/', function () {
     // $id 必须是数字
 })->where('id', '[0-9]+');*/
 
-Route::get('user/{id}/{name}', function ($id, $name) {
+/*Route::get('user/{id}/{name}', function ($id, $name) {
     // 同时指定 id 和 name 的数据格式
-})->where(['id' => '[0-9]+', 'name' => '[a-z]+']);
+    return "名字是：" . $name . ",ID是：" . $id;
+})->where(['id' => '[0-9]+', 'name' => '[a-z]+']);*/
+
+/*Route::get('search/{search}', function ($search){
+    return $search;
+})->where('search','.*');*/
+
+/*Route::get('user/profile', function (){
+    //通过路由名称生成URL
+    return '我的URL：' . route('profile');
+})->name('profile');*/
+
+//命名路由名称为profile
+//Route::get('user/profile', [UserProfileController::class, 'show'])->name('profile');
+
+//route(‘profile’)生成url
+//redirect()->route('profile')生成重定向
+/*Route::get('redirect', function() {
+    // 通过路由名称进行重定向
+    return redirect()->route('profile');
+});*/
+
+/*Route::get('user/{id}/profile', function ($id){
+    $url = route('profile',['id'=>$id]);
+    return $url;
+})->name('profile');*/
+
+Route::domain('{account}.laravel-blog.vip')->group(function () {
+    Route::get('user/{id}', function ($account, $id) {
+        return 'This is ' . $account . ' page of User ' . $id;
+    });
+});
