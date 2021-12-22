@@ -85,8 +85,20 @@ Route::get('/', function () {
     return $url;
 })->name('profile');*/
 
-Route::domain('{account}.laravel-blog.vip')->group(function () {
+/*Route::domain('{account}.laravel-blog.vip')->group(function () {
     Route::get('user/{id}', function ($account, $id) {
         return 'This is ' . $account . ' page of User ' . $id;
     });
-});
+});*/
+
+/*Route::prefix('admin')->group(function (){
+    Route::get('users', function (){
+        return "这是admin里的users";
+    });
+});*/
+
+/*Route::name('admin.')->group(function (){
+    Route::get('users',function (){
+        return "这里是新的路由名称，名称为admin.users";
+    })->name('users');
+});*/
