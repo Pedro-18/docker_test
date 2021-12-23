@@ -102,3 +102,8 @@ Route::get('/', function () {
         return "这里是新的路由名称，名称为admin.users";
     })->name('users');
 });*/
+
+//兜底路由，兜底路由应该总是放到应用注册的所有路由的最后。
+Route::fallback(function () {
+    //
+});
