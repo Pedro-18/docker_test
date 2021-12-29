@@ -21,6 +21,9 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
+        //添加全局中间件
+        // \App\Http\Middleware\CheckAge::class,
+        \App\Http\Middleware\StartSession::class,
     ];
 
     /**
@@ -44,6 +47,9 @@ class Kernel extends HttpKernel
             'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
+        'blog' => [
+            'age',
+        ],
     ];
 
     /**
@@ -52,6 +58,11 @@ class Kernel extends HttpKernel
      * These middleware may be assigned to groups or used individually.
      *
      * @var array<string, class-string|string>
+     */
+    /**
+     * 应用的路由中间件列表
+     *
+     * 这些中间件可以分配给路由组或单个路由
      */
     protected $routeMiddleware = [
         'auth' => \App\Http\Middleware\Authenticate::class,
@@ -63,5 +74,14 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'age' => \App\Http\Middleware\CheckAge::class,
+    ];
+
+    /**
+     * @var array 中间件数组
+     * 中间件排序，这个类的属性可以指定中间件的优先级
+     */
+    protected $middlewarePriority = [
+        //
     ];
 }

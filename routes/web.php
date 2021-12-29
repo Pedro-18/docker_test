@@ -102,6 +102,27 @@ Route::get('/', function () {
         return "这里是新的路由名称，名称为admin.users";
     })->name('users');
 });*/
+//中间件路由
+/*Route::post('/hello', function (){
+    //
+    return "这是age路由";
+})->middleware('age');*/
+
+//中间件组路由
+/*Route::group(['middleware' => ['blog']], function (){
+    //如果访问时不带上blog中间件组中的age参数，则会重定向到首页
+    Route::get('/', function (){
+        return view('welcome');
+    });
+
+    //访问带上age参数，则跳转到正确hello路由视图
+    Route::view('/hello','hello',['name'=>'学员君']);
+});*/
+
+//中间件参数
+Route::put('post/{id}', function ($id){
+    //
+})->middleware('role:editor');
 
 //兜底路由，兜底路由应该总是放到应用注册的所有路由的最后。
 Route::fallback(function () {
