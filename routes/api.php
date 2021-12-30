@@ -18,15 +18,19 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-/*Route::any('bar', function (){
+Route::any('bar', function (){
     return "这是来自任何HTTP谓词的请求";
-});*/
+});
 
 /*Route::get('users/{user}', function (\App\Models\User $user){
     return $user;
 });*/
 
-Route::get('profile/{user}', function(App\Models\User $user) {
+/*Route::get('profile/{user}', function(App\Models\User $user) {
     return $user;
+});*/
+
+Route::post('hello', function (){
+    return 'hello laravel!';
 });
 

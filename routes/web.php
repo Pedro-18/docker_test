@@ -120,9 +120,21 @@ Route::get('/', function () {
 });*/
 
 //中间件参数
-Route::put('post/{id}', function ($id){
+/*Route::put('post/{id}', function ($id){
     //
-})->middleware('role:editor');
+})->middleware('role:editor');*/
+
+Route::get('form_without_csrf_token', function (){
+    return '<form method="POST" action="/hello_from_form"><button type="submit">提交</button></form>';
+});
+
+Route::get('form_with_csrf_token', function (){
+    return '<form method="POST" action="/hello_from_form">' . csrf_field() . '<button type="submit">提交</button></form>';
+});
+
+Route::post('hello_from_form', function (){
+   return 'hello laravel!';
+});
 
 //兜底路由，兜底路由应该总是放到应用注册的所有路由的最后。
 Route::fallback(function () {
