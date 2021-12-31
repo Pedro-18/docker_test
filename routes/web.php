@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserProfileController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -124,7 +125,7 @@ Route::get('/', function () {
     //
 })->middleware('role:editor');*/
 
-Route::get('form_without_csrf_token', function (){
+/*Route::get('form_without_csrf_token', function (){
     return '<form method="POST" action="/hello_from_form"><button type="submit">提交</button></form>';
 });
 
@@ -134,9 +135,12 @@ Route::get('form_with_csrf_token', function (){
 
 Route::post('hello_from_form', function (){
    return 'hello laravel!';
-});
+});*/
+
+Route::get('user/{user}',[UserController::class,'show']);
 
 //兜底路由，兜底路由应该总是放到应用注册的所有路由的最后。
 Route::fallback(function () {
     //
+
 });
